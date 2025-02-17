@@ -4,6 +4,8 @@
 #ifndef FAN_SPEED_LAYER_TIME_H
 #define FAN_SPEED_LAYER_TIME_H
 
+#include <utils/Coord_t.h>
+
 #include "settings/types/Duration.h"
 #include "settings/types/LayerIndex.h"
 #include "settings/types/Velocity.h"
@@ -27,6 +29,16 @@ public:
      * next layer is allowed to begin printing on it?
      */
     Duration cool_min_layer_time;
+
+    /*!
+     * Similar to Minimum layer time, but to be applied for layers that contain overhanging extrusion.
+     */
+    Duration cool_min_layer_time_overhang;
+
+    /*!
+     * The specific minimum layer time for overhanging will be applied only if there is at least one overhanging segment longer that this threshold
+     */
+    coord_t cool_min_layer_time_overhang_min_segment_length;
 
     /*!
      * "Regular/Maximum Fan Speed Threshold". If the layers take longer to print
